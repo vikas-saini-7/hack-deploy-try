@@ -1,14 +1,24 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import routes from './routes';
 
 function App() {
   return (
-    <div className="App">
-      <br/>
-      <br/>
-      <br/>
-      Hi from app
-    </div>
+      <>
+        <Routes>
+          {routes.map((data, index) => (
+            <Route
+              // onUpdate={() => window.scrollTo(0, 0)}
+              exact={true}
+              path={data.path}
+              element={data.component}
+              key={index}
+              onEnter={() => window.scrollTo(0, 0)}
+            />
+          ))}
+          {/* <Route path="*" element={<NotFound />} /> */}
+        </Routes>
+      </>
   );
 }
 
